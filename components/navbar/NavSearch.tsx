@@ -1,6 +1,8 @@
+import {Input} from "@/components/ui/input";
+
 function NavSearch() {
   return (
-    <div>NavSearch</div>
+    <Input type="search" placeholder="Find a property..." className="max-w-xs dark:bg-muted" />
   );
 }
 
