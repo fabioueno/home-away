@@ -1,6 +1,6 @@
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {LuTent} from "react-icons/lu";
+import { LuTent } from "react-icons/lu";
 
 function Logo() {
   return (

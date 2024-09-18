@@ -6,7 +6,7 @@ const createProfileAction = async (formData: FormData) => {
 
   const firstName = formData.get("firstName") as string;
   console.log(firstName);
-}
+};
 
 function CreateProfilePage() {
   return (
@@ -15,8 +15,13 @@ function CreateProfilePage() {
 
       <div className="border p-8 rounded-md max-w-lg">
         <form action={createProfileAction}>
-          <FormInput name="firstName" type="text" label="First name" placeholder="Insert first name here..."/>
-          <SubmitButton/>
+          <FormInput
+            name="firstName"
+            type="text"
+            label="First name"
+            placeholder="Insert first name here..."
+          />
+          <SubmitButton />
         </form>
       </div>
     </section>

@@ -3,14 +3,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {Button} from "@/components/ui/button";
-import {LuAlignLeft} from "react-icons/lu";
+import { Button } from "@/components/ui/button";
+import { LuAlignLeft } from "react-icons/lu";
 import UserIcon from "@/components/navbar/UserIcon";
-import {links} from "@/utils/links";
+import { links } from "@/utils/links";
 import Link from "next/link";
-import {SignedIn, SignedOut, SignInButton, SignUpButton} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import SignOutLink from "@/components/navbar/SignOutLink";
 
 function LinksDropdown() {
@@ -18,8 +18,8 @@ function LinksDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="flex gap-4 max-w-[100px]">
-          <LuAlignLeft className="h-6 w-6"/>
-          <UserIcon/>
+          <LuAlignLeft className="h-6 w-6" />
+          <UserIcon />
         </Button>
       </DropdownMenuTrigger>
 
@@ -30,7 +30,7 @@ function LinksDropdown() {
               <button className="w-full text-left">Sign in</button>
             </SignInButton>
           </DropdownMenuItem>
-          <DropdownMenuSeparator/>
+          <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignUpButton mode="modal">
               <button className="w-full text-left">Sign up</button>
@@ -40,13 +40,15 @@ function LinksDropdown() {
 
         <SignedIn>
           {links.map((link) => {
-            return <DropdownMenuItem key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
-            </DropdownMenuItem>
+            return (
+              <DropdownMenuItem key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </DropdownMenuItem>
+            );
           })}
-          <DropdownMenuSeparator/>
+          <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <SignOutLink/>
+            <SignOutLink />
           </DropdownMenuItem>
         </SignedIn>
       </DropdownMenuContent>
