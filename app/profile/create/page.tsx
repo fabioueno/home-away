@@ -7,7 +7,14 @@ const createProfileAction: actionFunction = async (prevState, formData) => {
   "use server";
 
   const firstName = formData.get("firstName") as string;
-  return { message: `User ${firstName} created successfully!` };
+  const lastName = formData.get("lastName") as string;
+  const userName = formData.get("userName") as string;
+
+  if (userName !== "shakeAndBake") {
+    return { message: "Username must be shakeAndBake" };
+  }
+
+  return { message: "Profile created" };
 };
 
 function CreateProfilePage() {
@@ -15,15 +22,15 @@ function CreateProfilePage() {
     <section>
       <h1 className="text-2xl font-semibold mb-8 capitalize">New User</h1>
 
-      <div className="border p-8 rounded-md max-w-lg">
+      <div className="border p-8 rounded-md">
         <FormContainer action={createProfileAction}>
-          <FormInput
-            name="firstName"
-            type="text"
-            label="First name"
-            placeholder="Insert first name here..."
-          />
-          <SubmitButton />
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <FormInput name="firstName" type="text" label="First name" />
+            <FormInput name="lastName" type="text" label="Last name" />
+            <FormInput name="userName" type="text" label="Username" />
+          </div>
+
+          <SubmitButton className="mt-8" />
         </FormContainer>
       </div>
     </section>
