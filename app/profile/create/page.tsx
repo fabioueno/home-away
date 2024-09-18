@@ -1,11 +1,13 @@
 import FormInput from "@/components/form/FormInput";
 import SubmitButton from "@/components/form/Buttons";
+import FormContainer from "@/components/form/FormContainer";
+import { actionFunction } from "@/utils/types";
 
-const createProfileAction = async (formData: FormData) => {
+const createProfileAction: actionFunction = async (prevState, formData) => {
   "use server";
 
   const firstName = formData.get("firstName") as string;
-  console.log(firstName);
+  return { message: `User ${firstName} created successfully!` };
 };
 
 function CreateProfilePage() {
@@ -14,7 +16,7 @@ function CreateProfilePage() {
       <h1 className="text-2xl font-semibold mb-8 capitalize">New User</h1>
 
       <div className="border p-8 rounded-md max-w-lg">
-        <form action={createProfileAction}>
+        <FormContainer action={createProfileAction}>
           <FormInput
             name="firstName"
             type="text"
@@ -22,7 +24,7 @@ function CreateProfilePage() {
             placeholder="Insert first name here..."
           />
           <SubmitButton />
-        </form>
+        </FormContainer>
       </div>
     </section>
   );
